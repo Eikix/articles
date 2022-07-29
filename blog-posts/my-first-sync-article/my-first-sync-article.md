@@ -24,16 +24,4 @@ What you're getting: an all-in-one complete and reliable stack to create cloud n
 
 **Writing infrastructure as code and lambdas functions' logic in the same repository and language feels really good**. Nevertheless, have you ever tried to provision a DynamoDB table, a SQS queue or an EventBus with Serverless Framework? Being lambda-centric by design, this framework does not provision other AWS resources out-of-the-box for you. Essentially, it means that for Serverless to provision your resources, you'll have to write vanilla Cloud Formation. Should you want to try and feel the pain, here's [an article explaining how to provision a DynamoDB with Serverless](https://www.serverless.com/guides/dynamodb). Thankfully, [Fred Barthelet](https://dev.to/fredericbarthelet) recently posted an awesome article on how to replace vanilla Cloud Formation.
 
-You can also take advantage of [embedme](https://github.com/zakhenry/embedme) to extract your code from the markdown file and make sure that what you're displaying in the markdown is always up to date too e.g.
 
-```ts
-// code/demo-code.ts
-
-interface A {
-  hello: string;
-}
-```
-
-# Found a typo?
-
-If you've found a typo, a sentence that could be improved or anything else that should be updated on this blog post, you can access it through a git repository and make a pull request. Instead of posting a comment, please go directly to <REPO URL> and open a new pull request with your changes.
