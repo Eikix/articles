@@ -1,5 +1,5 @@
-import { Construct } from "constructs";
-import * as Serverless from "serverless";
+import { Construct } from 'constructs';
+import * as Serverless from 'serverless';
 
 export interface ServerlessProps {
   serverless: Serverless;
