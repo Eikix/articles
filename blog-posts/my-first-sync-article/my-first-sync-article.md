@@ -1,9 +1,9 @@
 ---
 published: false
 title: 'Serverless Framework and AWS CDK: The ultimate typescript Serverless stack'
-cover_image: './assets/logo_kumo_carre.png'
+cover_image: 'https://files.slack.com/files-pri/T7RNRLR3P-F03S45QR7PH/image.png'
 description: 'Combine Serverless Framework and the AWS Cloud Development Kit seamlessly using Serverless plugins.'
-tags: serverless, aws-cdk, aws, typescript
+tags: serverless, awscdk, aws, typescript
 series:
 canonical_url:
 ---
