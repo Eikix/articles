@@ -8,11 +8,11 @@ series:
 canonical_url:
 ---
 
-Hey there, serverless aficionadas and aficionados 😶‍🌫️! Have you ever made an oopsie 🙊 that cost your team hundreds of dollars? More than that? No way. Thousands!? I have two things to say to you. First, I'm sorry. Second, welcome to the club.
+Hey there, serverless aficionadas and aficionados 😶‍🌫️! Have you ever made an oopsie 🙊 that cost your team hundreds of dollars? More than that? No way. Thousands!? First, I'm really sorry. Second, welcome to the club.
 
 ## TL;DR
 
-When using the [AWS Cloud Development Kit](https://github.com/aws/aws-cdk) to provision a Dynamodb table, CDK sets by default the billing mode configuration as "Provisioned" instead of pay-per-request. This means that, by default, Dynamodb ceases to be truly serverless (remember scale-to-zero?)!
+When using the [AWS Cloud Development Kit](https://github.com/aws/aws-cdk) to provision a DynamoDB table, CDK sets by default the billing mode as "Provisioned" instead of pay-per-request. Therefore, Dynamodb essentially ceases to be truly serverless - remember scale-to-zero?
 
 Quick fix: when instanciating your AWS Dynamodb table, make sure to explicitly set the billing mode to "pay-per-request". If you're playing around with a toy stack, you can also set the removal policy to "destroy". This means that if you remove your stack, the table will be deleted as a result (probably a bad idea to use this setting in production).
 
@@ -32,4 +32,10 @@ Surely, if you read the TL;DR and the small background story, you're starting to
 
 Each of our team's new comer deployed a toy stack to learn about serverless and AWS. The serverless tutorial uses AWS CDK. To keep it light, we mostly went with default settings. Amongst these settings hid the "provisioned" billing mode and the "retain" removal policy. To simplify, the "provisioned" billing mode means that when provisioning a new dynamodb table, AWS provisions a floor amount of storage space and makes you pay for it. Moreover, as one removes their stack, the "retain" removal policy prevents the dynamodb table from being deleted with the stack.
 
-Several stacks deployed. Resources provisioned even without usage. Tables prevented from being deleted. A potentially endless money sink.
+Each rookie deploys a sandbox stack. Storage resources are provisioned, i.e. the table costs a floor amount even if we don't use it. Tables are prevented from being deleted. Yep, a potentially bottomless pit was created.
+
+### Wrapping it up: check your serverless expenses each month and don't take serverless' low prices for granted.
+
+Serverless is really inexpensive compared to non-serverless tech stacks. An order of magnitude cheaper. That's why my manager seemed a little surpised when the stacks deployed as part of our serverless tutorial were costing hundreds each months!
+
+Thankfully, my teammates caught the error after a couple of months thus limiting my oopsie from wasting thousands of dollars (and electricity 💚).
