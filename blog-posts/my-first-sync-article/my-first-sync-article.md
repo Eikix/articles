@@ -12,7 +12,7 @@ As a software engineer, choosing a stack or framework to work with is hard. Take
 
 ## TL;DR
 
-You build serverless apps, your language of choice is Typescript. You're assessing which tech stack & tool will enable you to develop better quality applications for your end users. Coupling [Serverless Framework](https://www.serverless.com/framework) and the [AWS Cloud Development Kit](https://github.com/aws/aws-cdk) forms one of the best stacks to reliably and quickly build high-value cloud native apps.
+If you build serverless applications and your language of choice is Typescript. If you're assessing which tech stack & tool will enable you to develop better quality applications for your end users. Then, coupling [Serverless Framework](https://www.serverless.com/framework) and the [AWS Cloud Development Kit](https://github.com/aws/aws-cdk) forms one of the best stacks to reliably and quickly build high-value cloud native apps. One of the most practical and modern way to do that is using the [@swarmion/serverless-cdk-plugin](https://www.npmjs.com/package/@swarmion/serverless-cdk-plugin) plugin to seamlessly integrate your AWS CDK resources in Serverless Framework.
 
 Most compelling pros:
 
