@@ -8,11 +8,11 @@ series:
 canonical_url:
 ---
 
-As a software engineer, choosing a stack or framework to work with is hard. Take frontend developers for example. They have been argueing over which framework is the best for years. Yet, to this day, it's hard to say React has won (although it is safe to say Angular is loosing 🤒). The serverless community faces this struggle as well. I've been using Serverless Framework along with Typescript for half a year now to develop cloud native applications. In my experience, it's mostly been a DevX dream journey - mostly 🤒 🥺.
+As a software engineer, choosing a stack or framework to work with is hard. Take frontend developers for example. They have been argueing over which framework is the best for years. Yet, to this day, it's hard to say React has won (although it is safe to say Angular is loosing 🤒). The serverless community faces this struggle as well. I've been using Serverless Framework along with Typescript for half a year now to develop cloud native applications. In my experience, it's mostly been a breeze - mostly 🥺.
 
 ## TL;DR
 
-The year is 2022, you're a promising (or senior) software engineer. You build serverless apps, your language of choice is Typescript. You're assessing which tech stack & tool will enable you to develop better quality applications for your end users. Coupling [Serverless Framework](https://www.serverless.com/framework) and the [AWS Cloud Development Kit](https://github.com/aws/aws-cdk) forms one of the best stacks to reliably and quickly build high-value cloud native apps. 
+You build serverless apps, your language of choice is Typescript. You're assessing which tech stack & tool will enable you to develop better quality applications for your end users. Coupling [Serverless Framework](https://www.serverless.com/framework) and the [AWS Cloud Development Kit](https://github.com/aws/aws-cdk) forms one of the best stacks to reliably and quickly build high-value cloud native apps.
 
 Most compelling pros:
 
@@ -90,7 +90,7 @@ Upon deploying (or packaging) your Serverless application (`sls deploy` or whate
 
 #### How can I use the plugin in my Serverless Framework app?
 
-> 🎙 Disclaimer: This plugin supposes you are using Typescript as your Serverless app's main language. The bridge made between AWS CDK and Serverless Framework supposes users have a `serverless.ts` config file (sorry to all the yamlers out there 💅).
+> 🎙 Disclaimer: This plugin supposes you are using Typescript as your Serverless app's main language. The bridge made between AWS CDK and Serverless Framework supposes users have a `serverless.ts` config file (sorry to all you yamlers out there 💅).
 
 Import and use the `@swarmion/serverless-cdk-plugin` in your service's `serverless.ts` configuration file.
 
