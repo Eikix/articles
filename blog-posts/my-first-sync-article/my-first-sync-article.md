@@ -8,11 +8,11 @@ series:
 canonical_url:
 ---
 
-As a software engineer, choosing a stack or framework to work with is hard. Almost too hard. Take frontend developers for example. They have been argueing over which framework is the best for years. Yet, to this day, it's hard to say React has won (although it is safe to say Angular is loosing 🤒). The serverless community faces this struggle as well. I've been using Serverless Framework along with Typescript for half a year now to develop cloud native applications. In my experience, it's mostly been a DevX dream journey - mostly 🤒 🥺.
+As a software engineer, choosing a stack or framework to work with is hard. Take frontend developers for example. They have been argueing over which framework is the best for years. Yet, to this day, it's hard to say React has won (although it is safe to say Angular is loosing 🤒). The serverless community faces this struggle as well. I've been using Serverless Framework along with Typescript for half a year now to develop cloud native applications. In my experience, it's mostly been a DevX dream journey - mostly 🤒 🥺.
 
 ## TL;DR
 
-The year is 2022, you're a promising (or senior) software engineer. You build pristine serverless apps, your language of choice is Typescript. You're assessing which tech stack & tool will enable you to develop better quality applications for your end users. Coupling [Serverless Framework](https://www.serverless.com/framework) and the [AWS Cloud Development Kit](https://github.com/aws/aws-cdk) forms one of the best stack to reliably and quickly build high-value cloud native apps.
+The year is 2022, you're a promising (or senior) software engineer. You build serverless apps, your language of choice is Typescript. You're assessing which tech stack & tool will enable you to develop better quality applications for your end users. Coupling [Serverless Framework](https://www.serverless.com/framework) and the [AWS Cloud Development Kit](https://github.com/aws/aws-cdk) forms one of the best stacks to reliably and quickly build high-value cloud native apps. 
 
 Most compelling pros:
 
@@ -66,11 +66,11 @@ module.exports = serverlessConfiguration;
 
 From there, you have two options:
 
-1. Handling the deployment of your other resources separately, for instance using the AWS CDK. [Sebastian Bille](https://dev.to/tastefulelk) wrote a cool article about this subject. The main consequence of this approach is having two separate stacks that deploy independently. A situation might arise where one of the two deployment fails. Having only one deployment process for your application solves this downside.
+1. Handling the deployment of your other resources separately, for instance using the AWS CDK. [Sebastian Bille](https://dev.to/tastefulelk) wrote [a cool article](https://dev.to/aws-builders/combining-serverless-framework-aws-cdk-1dg0) about this subject. The main consequence of this approach is having two separate stacks that deploy independently. A situation might arise where one of the two deployment fails. Having only one deployment process for your application solves this downside.
 
-2. Have Serverless Framework provision your resources as part of its deployment cycle. The trade-off is having to write vanilla Cloud Formation. If you've never done it before, believe me, it's a DevX faux-pas 🙅. Thankfully, [Fred Barthelet](https://dev.to/fredericbarthelet) wrote an awesome article on how to replace vanilla Cloud Formation by AWS CDK constructs.
+2. Have Serverless Framework provision your resources as part of its deployment cycle. The trade-off is having to write vanilla Cloud Formation. If you've never done it before, believe me, it's a DevX faux-pas 🙅. Thankfully, [Fred Barthelet](https://dev.to/fredericbarthelet) wrote [an awesome article](https://dev.to/kumo/serverless-framework-aws-cdk-1dnf) on how to replace vanilla Cloud Formation by AWS CDK constructs.
 
-Essentially, `aws-cdk` stacks have a transpilation method that allows the dev-friendly code you wrote to be transpiled to Cloud formation. The downside to this process is the necessity to write a lot of boilerplate code everytime you need a new resource (SQS queue, etc.).
+Essentially, `aws-cdk` stack classes have a transpilation method that allows the dev-friendly Typescript code you wrote to be transpiled to Cloud formation. The downside to this process is the necessity to write a lot of boilerplate code everytime you need a new resource (SQS queue, etc.).
 
 These two solutions solve many interesting use-cases that developers face when building cloud native apps:
 
