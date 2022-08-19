@@ -1,8 +1,8 @@
 ---
 published: false
-title: 'AWS CDK and DynamoDB: this one configuration line that's costing you hundreds of dollars!'
+title: 'AWS CDK and DynamoDB: this one configuration line that is costing you hundreds of dollars'
 cover_image: './assets/logo_kumo_carre.png'
-description: "AWS CDK sets AWS DynamoDB's billing mode to Provisioned by default! You may be wasting hundreds because of this configuration"
+description: 'AWS CDK sets the AWS DynamoDB billing mode to Provisioned by default. Learn how to fix this configuration.'
 tags: serverless, awscdk, aws, dynamodb
 series:
 canonical_url:
