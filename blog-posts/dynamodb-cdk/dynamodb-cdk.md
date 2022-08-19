@@ -8,7 +8,7 @@ series:
 canonical_url:
 ---
 
-Hey there, serverless aficionadas and aficionados 😶‍🌫️! Have you ever made an oopsie 🙊 that cost your team hundreds of dollars? More than that? No way. Thousands!? First, I'm really sorry. Second, welcome to the club.
+Hey there, serverless aficionadas and aficionados 😶‍🌫️! Have you ever made an unfortunate mistake 🙊 that cost your team hundreds of dollars? More than that? No way. Thousands!? First, I'm really sorry. Second, welcome to the club.
 
 ## TL;DR
 
