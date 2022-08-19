@@ -1,14 +1,14 @@
 ---
 published: false
 title: 'The ultimate Serverless DevX: Serverless Framework, AWS CDK and Typescript'
-cover_image: 'https://files.slack.com/files-pri/T7RNRLR3P-F03S45QR7PH/image.png'
+cover_image: './assets/logo_kumo_carre.png'
 description: 'Seamlessly combine Serverless Framework and the AWS Cloud Development Kit using a Serverless plugin to build modern and robust cloud native applications.'
 tags: serverless, awscdk, aws, typescript
 series:
 canonical_url:
 ---
 
-Serverless Framework and AWS CDK are two big players in the serverless development world. At first glance, you would think they are competitors, but I've been using Serverless Framework along with Typescript for half a year now to develop cloud native applications. In my experience, it's mostly been a breeze - mostly 🥺.
+Serverless Framework and AWS CDK are two important players in the serverless development ecosystem. At first glance, you would think they are competitors, but I've been using Serverless Framework along with AWS CDK and Typescript for half a year now to develop cloud native applications. In my experience, it's mostly been a breeze - mostly 🥺.
 
 ## TL;DR
 
