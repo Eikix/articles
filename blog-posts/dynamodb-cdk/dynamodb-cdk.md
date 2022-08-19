@@ -31,7 +31,6 @@ const table = new Table(stack, 'MyTable', {
   billingMode: BillingMode.PAY_PER_REQUEST,
   removalPolicy: RemovalPolicy.DESTROY,
 });
-
 ```
 
 ### Getting acquainted with serverless as a software engineer
