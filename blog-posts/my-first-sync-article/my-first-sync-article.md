@@ -48,9 +48,13 @@ import type { ServerlessCdkPluginConfig } from '@swarmion/serverless-cdk-plugin'
 import { MyCdkConstruct } from 'resources/dynamodb';
 
 const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
-  service: `${projectName}-orchestrator`, // Keep it short to have role name below 64
-  frameworkVersion,
-  configValidationMode: 'error',
+  service: `mydevto-stack`,
+  frameworkVersion: '*',
+  provider: {
+    name: 'aws',
+    runtime: 'nodejs14.x',
+  },
+
   // Import the plugin in your serverless configuration.
   plugins: ['@swarmion/serverless-cdk-plugin'],
 
@@ -86,43 +90,21 @@ At [Kumo](https://dev.to/kumo), we have worked on developing an awesome tool to 
 
 #### How does the plugin work?
 
-Upon deploying (or packaging) your Serverless application (`sls deploy` or whatever you're using to deploy your stack), the `@swarmion/serverless-cdk-plugin` converts your `aws-cdk` construct code to Cloud Formation. This is essentially some kind of transpilation (typescript => cloud formation). Then, Serverless Framework provisions it on deploy.
+Upon deploying (or packaging) your Serverless application (e.g. `sls deploy`), the `@swarmion/serverless-cdk-plugin` converts your `aws-cdk` construct code to Cloud Formation and integrates it in the Serverless deployment cycle under the hood. This is essentially some kind of transpilation (typescript => cloud formation). Then, Serverless Framework provisions it on deploy.
 
-> 🚨 Caveats: If the resources you're trying to deploy require a so-called bootstrap stack, the plugin won't work! Say you're using the aws-cdk library to provision a lambda function. The bootstrap stack consists in provisioning an S3 bucket with the lambda's code. This S3 buckets will then be referenced and used at a later stage of the deploy cycle to provision the lambda function. Don't worry, we got you covered! Constructs requiring a boostrap stack clash with Serverless Framework's deploy cycle and will result in an error at build time. The only way to deploy those type of constructs is to use a separate deployment process.
+> 🚨 Caveats: Using AWS CDK with Serverless Framework does not allow you to deploy resources that require a so-called bootstrap stack.
+
+> For instance, using the AWS CDK to create a lambda function. There, the bootstrap stack consists in provisioning an S3 bucket with the lambda's code. This S3 bucket would then be referenced and used at a later stage of the deployment cycle to provision the lambda function.
+
+> Trying to create constructs that require a boostrap stack will thus result in a strange error at build time. The plugin helps in that it throws a very explicit error. The only way to deploy those type of constructs is to use a separate deployment process.
 
 #### How can I use the plugin in my Serverless Framework app?
 
 > 🎙 Disclaimer: This plugin supposes you are using Typescript as your Serverless app's main language. The bridge made between AWS CDK and Serverless Framework supposes users have a `serverless.ts` config file (sorry to all you yamlers out there 💅).
 
-Import and use the `@swarmion/serverless-cdk-plugin` in your service's `serverless.ts` configuration file.
+Import and use the `@swarmion/serverless-cdk-plugin` in your service's `serverless.ts` configuration file (as shown in the above code snippet).
 
-```ts
-// code/serverless-config.ts
-
-// serverless.ts
-
-import { AWS } from '@serverless/typescript';
-
-import type { ServerlessCdkPluginConfig } from '@swarmion/serverless-cdk-plugin';
-
-import { MyCdkConstruct } from 'resources/dynamodb';
-
-const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
-  service: `${projectName}-orchestrator`, // Keep it short to have role name below 64
-  frameworkVersion,
-  configValidationMode: 'error',
-  // Import the plugin in your serverless configuration.
-  plugins: ['@swarmion/serverless-cdk-plugin'],
-
-  // Reference your custom aws-cdk construct at the "construct" key. That's it!
-  construct: MyCdkConstruct,
-  // ...More configuration props
-};
-
-module.exports = serverlessConfiguration;
-```
-
-Write `aws-cdk` constructs - if you have more than one, group them all in one parent construct - reference it in the `serverless.ts` file, and ta-da 🥳 🤩! Upon running your deploy script, the Serverless Framework will recognize that you want to provision your resources and deploy them.
+Write `aws-cdk` constructs - if you want to create more than one construct, use the AWS CDK composition to create a higher level construct - reference it in the `serverless.ts` file, and ta-da 🥳 🤩! Upon running your deploy script, the Serverless Framework will recognize that you want to provision these resources and deploy them.
 
 For instance, if you want to provision a DynamoDB table:
 
@@ -188,8 +170,11 @@ export class MyCdkConstruct extends ServerlessConstruct {
     this.dynamodbArn = tableArn;
     this.dynamodbName = tableName;
 
-    // Serverless context is now accessible inside the CDK code! There are numerous use-cases, e.g. accessing your lambda's names.
-    this.testServerlessConfigValue = props.serverless.resources.Outputs?.testOutput.Description;
+    /*
+      Serverless context variables is now accessible inside the CDK code!
+      There are numerous other use-cases, e.g. accessing your lambda's names.
+     */
+    this.testServerlessConfigValue = props.serverless.resources.Outputs?.TestOutput.Description;
   }
 }
 ```

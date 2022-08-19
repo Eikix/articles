@@ -22,7 +22,10 @@ export class MyCdkConstruct extends ServerlessConstruct {
     this.dynamodbArn = tableArn;
     this.dynamodbName = tableName;
 
-    // Serverless context is now accessible inside the CDK code! There are numerous use-cases, e.g. accessing your lambda's names.
-    this.testServerlessConfigValue = props.serverless.resources.Outputs?.testOutput.Description;
+    /*
+      Serverless context variables is now accessible inside the CDK code!
+      There are numerous other use-cases, e.g. accessing your lambda's names.
+     */
+    this.testServerlessConfigValue = props.serverless.resources.Outputs?.TestOutput.Description;
   }
 }
