@@ -2,5 +2,9 @@
   {
     "id": 1148976,
     "relativePathToArticle": "./blog-posts/my-first-sync-article/my-first-sync-article.md"
+  },
+  {
+    "id": 1170764,
+    "relativePathToArticle": "./blog-posts/dynamodb-cdk/dynamodb-cdk.md"
   }
 ]
