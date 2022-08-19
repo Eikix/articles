@@ -8,11 +8,13 @@ series:
 canonical_url:
 ---
 
-As a software engineer, choosing a stack or framework to work with is hard. Take frontend developers for example. They have been argueing over which framework is the best for years. Yet, to this day, it's hard to say React has won (although it is safe to say Angular is loosing 🤒). The serverless community faces this struggle as well. I've been using Serverless Framework along with Typescript for half a year now to develop cloud native applications. In my experience, it's mostly been a breeze - mostly 🥺.
+Serverless Framework and AWS CDK are two big players in the serverless development world. At first glance, you would think they are competitors, but I've been using Serverless Framework along with Typescript for half a year now to develop cloud native applications. In my experience, it's mostly been a breeze - mostly 🥺.
 
 ## TL;DR
 
-If you build serverless applications and your language of choice is Typescript. If you're assessing which tech stack & tool will enable you to develop better quality applications for your end users. Then, coupling [Serverless Framework](https://www.serverless.com/framework) and the [AWS Cloud Development Kit](https://github.com/aws/aws-cdk) forms one of the best stacks to reliably and quickly build high-value cloud native apps. One of the most practical and modern way to do that is using the [@swarmion/serverless-cdk-plugin](https://www.npmjs.com/package/@swarmion/serverless-cdk-plugin) plugin to seamlessly integrate your AWS CDK resources in Serverless Framework.
+Combining [Serverless Framework](https://www.serverless.com/framework) and the [AWS Cloud Development Kit](https://github.com/aws/aws-cdk) forms one of the best stacks to reliably and quickly robust cloud native applications.
+
+To achieve that, I recommend using the [@swarmion/serverless-cdk-plugin](https://www.npmjs.com/package/@swarmion/serverless-cdk-plugin) plugin to seamlessly integrate your AWS CDK resources in Serverless Framework.
 
 Most compelling pros:
 
