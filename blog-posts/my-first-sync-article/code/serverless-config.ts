@@ -7,7 +7,7 @@ import type { ServerlessCdkPluginConfig } from '@swarmion/serverless-cdk-plugin'
 import { MyCdkConstruct } from 'resources/dynamodb';
 
 const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
-  service: `${projectName}-orchestrator`, // Keep it short to have role name below 64
+  service: `${projectName}-dev`, // Keep it short to have role name below 64
   frameworkVersion,
   configValidationMode: 'error',
   // Import the plugin in your serverless configuration.

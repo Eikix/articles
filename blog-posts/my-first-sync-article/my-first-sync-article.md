@@ -60,7 +60,6 @@ const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
 };
 
 module.exports = serverlessConfiguration;
-
 ```
 
 ## Building high quality Serverless apps
@@ -121,7 +120,6 @@ const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
 };
 
 module.exports = serverlessConfiguration;
-
 ```
 
 Write `aws-cdk` constructs - if you have more than one, group them all in one parent construct - reference it in the `serverless.ts` file, and ta-da 🥳 🤩! Upon running your deploy script, the Serverless Framework will recognize that you want to provision your resources and deploy them.
@@ -130,6 +128,41 @@ For instance, if you want to provision a DynamoDB table:
 
 ```ts
 // code/serverless-construct-testcase.ts
+
+import { AttributeType, BillingMode, Table } from 'aws-cdk-lib/aws-dynamodb';
+import { Construct } from 'constructs';
+
+import { ServerlessProps } from 'types';
+
+export class MyCdkConstruct extends Construct {
+  public dynamodbArn: string;
+  public dynamodbName: string;
+
+  constructor(scope: Construct, id: string, props: ServerlessProps) {
+    super(scope, id, props);
+
+    const { tableArn, tableName } = new Table(this, 'MyDynamoDBTable', {
+      partitionKey: { name: 'PK', type: AttributeType.STRING },
+      sortKey: { name: 'SK', type: AttributeType.STRING },
+      billingMode: BillingMode.PAY_PER_REQUEST,
+    });
+
+    this.dynamodbArn = tableArn;
+    this.dynamodbName = tableName;
+  }
+}
+```
+
+#### What you're getting:
+
+- An all-in-one reliable stack to build serverless application!
+
+- Helper functions to reference your resources inside your lambdas shipped with the plugin! For instance, your lambda functions can now access attributes of your DynamoDB in a type-safe manner (ARN, table name, and more)!
+
+- Moreover, the plugin exposes the Serverless context inside your construct! This allows for a better DevX: one no longer needs to hardcode ARNs or resources information coming from Serverless' context inside their constructs' code. When using the serverless <> cdk plugin, you can now type your construct as a `ServerlessCdkPlugin.ServerlessConstruct`. This will result in your construct having access to the Serverless Framework context and configuration.
+
+```ts
+// code/serverless-construct-testcase-with-serverless.ts
 
 // MyCdkConstruct.ts
 
@@ -159,34 +192,6 @@ export class MyCdkConstruct extends ServerlessConstruct {
     this.testServerlessConfigValue = props.serverless.resources.Outputs?.testOutput.Description;
   }
 }
-
 ```
 
-#### What you're getting:
-
-- An all-in-one reliable stack to build serverless application!
-
-- Helper functions to reference your resources inside your lambdas shipped with the plugin! For instance, your lambda functions can now access attributes of your DynamoDB in a type-safe manner (ARN, table name, and more)!
-
-- Moreover, the plugin exposes the Serverless context inside your construct! This allows for a better DevX: one no longer needs to hardcode ARNs or resources information coming from Serverless' context inside their constructs' code. When using the serverless <> cdk plugin, you can now type your construct as a `ServerlessCdkPlugin.ServerlessConstruct`. This will result in your construct having access to the Serverless Framework context and configuration.
-
-```ts
-// code/serverless-construct.ts
-
-import { Construct } from 'constructs';
-import * as Serverless from 'serverless';
-
-export interface ServerlessProps {
-  serverless: Serverless;
-}
-
-export class ServerlessConstruct extends Construct {
-  serverlessProps?: ServerlessProps;
-
-  constructor(scope: Construct, id: string, serverlessProps?: ServerlessProps) {
-    super(scope, id);
-
-    this.serverlessProps = serverlessProps;
-  }
-}
-```
+Hey 👷, thank you so much for reading this article. Have a good one!

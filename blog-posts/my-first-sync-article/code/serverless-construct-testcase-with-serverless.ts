@@ -1,11 +1,14 @@
+// MyCdkConstruct.ts
+
 import { AttributeType, BillingMode, Table } from 'aws-cdk-lib/aws-dynamodb';
 import { Construct } from 'constructs';
 
-import { ServerlessProps } from 'types';
+import { ServerlessConstruct, ServerlessProps } from 'types';
 
-export class MyCdkConstruct extends Construct {
+export class MyCdkConstruct extends ServerlessConstruct {
   public dynamodbArn: string;
   public dynamodbName: string;
+  public testServerlessConfigValue: string | undefined;
 
   constructor(scope: Construct, id: string, props: ServerlessProps) {
     super(scope, id, props);
@@ -18,5 +21,8 @@ export class MyCdkConstruct extends Construct {
 
     this.dynamodbArn = tableArn;
     this.dynamodbName = tableName;
+
+    // Serverless context is now accessible inside the CDK code! There are numerous use-cases, e.g. accessing your lambda's names.
+    this.testServerlessConfigValue = props.serverless.resources.Outputs?.testOutput.Description;
   }
 }
