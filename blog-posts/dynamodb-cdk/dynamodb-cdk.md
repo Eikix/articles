@@ -1,22 +1,12 @@
 ---
 published: false
-title: 'The ultimate Serverless DevX: Serverless Framework, AWS CDK and Typescript'
+title: 'AWS CDK and DynamoDB: this one configuration line that's costing you hundreds of dollars!'
 cover_image: 'https://files.slack.com/files-pri/T7RNRLR3P-F03S45QR7PH/image.png'
-description: 'Seamlessly combine Serverless Framework and the AWS Cloud Development Kit using a Serverless plugin to build modern and robust cloud native applications.'
-tags: serverless, awscdk, aws, typescript
-series:
-canonical_url:
----
-
-<!-- ---
-published: false
-title: 'AWS CDK & Dynamodb: this one configuration line that's costing you hundreds of dollars!'
-cover_image: 'https://files.slack.com/files-pri/T7RNRLR3P-F03S45QR7PH/image.png'
-description: "AWS CDK sets AWS DynamoDB's billing mode to 'Provisioned' by default! You may be wasting hundreds because of this configuration"
+description: "AWS CDK sets AWS DynamoDB's billing mode to Provisioned by default! You may be wasting hundreds because of this configuration"
 tags: serverless, awscdk, aws, dynamodb
 series:
 canonical_url:
---- -->
+---
 
 Hey there, serverless aficionadas and aficionados 😶‍🌫️! Have you ever made an oopsie 🙊 that cost your team hundreds of dollars? More than that? No way. Thousands!? First, I'm really sorry. Second, welcome to the club.
 
