@@ -161,11 +161,9 @@ export class MyConstruct extends ServerlessConstruct {
 
 - An all-in-one reliable stack to build serverless application!
 
-- The plugin ships with helper functions to reference your resources inside your lambdas! Now, your lambda functions can access attributes of your DynamoDB in a type-safe manner (ARN, name, and more)!
+- Helper functions to reference your resources inside your lambdas shipped with the plugin! For instance, your lambda functions can now access attributes of your DynamoDB in a type-safe manner (ARN, table name, and more)!
 
-- Moreover, the plugin exposes the Serverless context inside your construct! This allows for a better DevX: one no longer needs to hardcode ARNs or resources information inside their constructs' code.
-
-When using the serverless <> cdk plugin, you can now type your construct as a `ServerlessCdkPlugin.ServerlessConstruct`. This will result in your construct having access to the Serverless Framework context and configuration.
+- Moreover, the plugin exposes the Serverless context inside your construct! This allows for a better DevX: one no longer needs to hardcode ARNs or resources information coming from Serverless' context inside their constructs' code. When using the serverless <> cdk plugin, you can now type your construct as a `ServerlessCdkPlugin.ServerlessConstruct`. This will result in your construct having access to the Serverless Framework context and configuration.
 
 ```ts
 // code/serverless-construct.ts
