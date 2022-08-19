@@ -22,7 +22,7 @@ Most compelling pros:
 
 - 🍭 Easily create AWS resources thanks to the AWS CDK's awesome DevX.
 
-- 🏗 Benefit from only one deployment process for the entire app handled by Serverless Framework.
+- 🏗 Benefit from only one deployment process for the entire app, handled by Serverless Framework.
 
 How does it work?
 
@@ -45,7 +45,7 @@ import { AWS } from '@serverless/typescript';
 
 import type { ServerlessCdkPluginConfig } from '@swarmion/serverless-cdk-plugin';
 
-import { OrchestratorDynamodb } from 'resources/dynamodb';
+import { MyCdkConstruct } from 'resources/dynamodb';
 
 const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
   service: `${projectName}-orchestrator`, // Keep it short to have role name below 64
@@ -55,11 +55,12 @@ const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
   plugins: ['@swarmion/serverless-cdk-plugin'],
 
   // Reference your custom aws-cdk construct at the "construct" key. That's it!
-  construct: OrchestratorDynamodb,
+  construct: MyCdkConstruct,
   // ...More configuration props
 };
 
 module.exports = serverlessConfiguration;
+
 ```
 
 ## Building high quality Serverless apps
@@ -105,7 +106,7 @@ import { AWS } from '@serverless/typescript';
 
 import type { ServerlessCdkPluginConfig } from '@swarmion/serverless-cdk-plugin';
 
-import { OrchestratorDynamodb } from 'resources/dynamodb';
+import { MyCdkConstruct } from 'resources/dynamodb';
 
 const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
   service: `${projectName}-orchestrator`, // Keep it short to have role name below 64
@@ -115,11 +116,12 @@ const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
   plugins: ['@swarmion/serverless-cdk-plugin'],
 
   // Reference your custom aws-cdk construct at the "construct" key. That's it!
-  construct: OrchestratorDynamodb,
+  construct: MyCdkConstruct,
   // ...More configuration props
 };
 
 module.exports = serverlessConfiguration;
+
 ```
 
 Write `aws-cdk` constructs - if you have more than one, group them all in one parent construct - reference it in the `serverless.ts` file, and ta-da 🥳 🤩! Upon running your deploy script, the Serverless Framework will recognize that you want to provision your resources and deploy them.
@@ -129,14 +131,14 @@ For instance, if you want to provision a DynamoDB table:
 ```ts
 // code/serverless-construct-testcase.ts
 
-// MyConstruct.ts
+// MyCdkConstruct.ts
 
 import { AttributeType, BillingMode, Table } from 'aws-cdk-lib/aws-dynamodb';
 import { Construct } from 'constructs';
 
 import { ServerlessConstruct, ServerlessProps } from 'types';
 
-export class MyConstruct extends ServerlessConstruct {
+export class MyCdkConstruct extends ServerlessConstruct {
   public dynamodbArn: string;
   public dynamodbName: string;
   public testServerlessConfigValue: string | undefined;
@@ -144,7 +146,7 @@ export class MyConstruct extends ServerlessConstruct {
   constructor(scope: Construct, id: string, props: ServerlessProps) {
     super(scope, id, props);
 
-    const { tableArn, tableName } = new Table(this, 'OrchestratorTable', {
+    const { tableArn, tableName } = new Table(this, 'MyDynamoDBTable', {
       partitionKey: { name: 'PK', type: AttributeType.STRING },
       sortKey: { name: 'SK', type: AttributeType.STRING },
       billingMode: BillingMode.PAY_PER_REQUEST,
@@ -157,6 +159,7 @@ export class MyConstruct extends ServerlessConstruct {
     this.testServerlessConfigValue = props.serverless.resources.Outputs?.testOutput.Description;
   }
 }
+
 ```
 
 #### What you're getting:

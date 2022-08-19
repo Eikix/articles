@@ -4,7 +4,7 @@ import { AWS } from '@serverless/typescript';
 
 import type { ServerlessCdkPluginConfig } from '@swarmion/serverless-cdk-plugin';
 
-import { OrchestratorDynamodb } from 'resources/dynamodb';
+import { MyCdkConstruct } from 'resources/dynamodb';
 
 const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
   service: `${projectName}-orchestrator`, // Keep it short to have role name below 64
@@ -14,7 +14,7 @@ const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
   plugins: ['@swarmion/serverless-cdk-plugin'],
 
   // Reference your custom aws-cdk construct at the "construct" key. That's it!
-  construct: OrchestratorDynamodb,
+  construct: MyCdkConstruct,
   // ...More configuration props
 };
 
