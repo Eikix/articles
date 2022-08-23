@@ -8,7 +8,7 @@ series:
 canonical_url:
 ---
 
-Serverless Framework and AWS CDK are two important players in the serverless development ecosystem. At first glance, you would think they are competitors, but I've been using Serverless Framework along with AWS CDK and Typescript for half a year now to develop cloud-native applications. In my experience, it's mostly been a breeze - mostly 🥺.
+Serverless Framework and AWS CDK are two important players in the serverless development ecosystem. At first glance, you would think they are competitors, but I've been combining Serverless Framework, AWS CDK and Typescript for half a year to develop cloud-native applications. In my experience, it's mostly been a breeze - mostly 🥺.
 
 ## TL;DR
 
