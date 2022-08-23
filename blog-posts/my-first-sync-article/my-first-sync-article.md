@@ -18,11 +18,11 @@ To achieve that, I recommend using the [@swarmion/serverless-cdk-plugin](https:/
 
 Most compelling pros:
 
-- 👷 Build a state-of-the-art serverless app by writing your application's logic and infrastructure as code in the same repository (in typescript 🧞‍♂️).
+- 🏗 Leverage the no. 1 framework's (Serverless framework) awesome community and developer experience to create and deploy lambdas,
 
-- 🍭 Easily create AWS resources thanks to the AWS CDK's awesome DevX.
+- 🍭 Easily create other AWS resources thanks to the AWS CDK's higher levels abstractions,
 
-- 🏗 Benefit from only one deployment process for the entire app, handled by Serverless Framework.
+- 👷 Build a state-of-the-art serverless app by writing your application's logic and configuration in the same repository with Typescript (strongly typed infrastructure as code 🧞‍♂️!).
 
 How does it work?
 
@@ -48,7 +48,7 @@ import type { ServerlessCdkPluginConfig } from '@swarmion/serverless-cdk-plugin'
 import { MyCdkConstruct } from 'resources/dynamodb';
 
 const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
-  service: `mydevto-stack`,
+  service: `my-service`,
   frameworkVersion: '*',
   provider: {
     name: 'aws',
