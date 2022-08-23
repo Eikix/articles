@@ -7,7 +7,7 @@ import type { ServerlessCdkPluginConfig } from '@swarmion/serverless-cdk-plugin'
 import { MyCdkConstruct } from 'resources/dynamodb';
 
 const serverlessConfiguration: AWS & ServerlessCdkPluginConfig = {
-  service: `mydevto-stack`,
+  service: `my-service`,
   frameworkVersion: '*',
   provider: {
     name: 'aws',
