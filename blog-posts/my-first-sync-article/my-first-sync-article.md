@@ -2,17 +2,17 @@
 published: false
 title: 'The ultimate Serverless DevX: Serverless Framework, AWS CDK and Typescript'
 cover_image: 'https://imgs.search.brave.com/xjoe2liBJ-aCa1ej0ovW-03ha3ASiK0GAI1bPIbYtgA/rs:fit:1200:513:1/g:ce/aHR0cHM6Ly9zdGF0/aWMucGFja3QtY2Ru/LmNvbS9wcm9kdWN0/cy85NzgxNzg3MTI2/NDczL2dyYXBoaWNz/L0IwNTk5NV8wM18w/MS5wbmc'
-description: 'Seamlessly combine Serverless Framework and the AWS Cloud Development Kit using a Serverless plugin to build modern and robust cloud native applications.'
+description: 'Seamlessly combine Serverless Framework and the AWS Cloud Development Kit using a Serverless plugin to build modern and robust cloud-native applications.'
 tags: serverless, awscdk, aws, typescript
 series:
 canonical_url:
 ---
 
-Serverless Framework and AWS CDK are two important players in the serverless development ecosystem. At first glance, you would think they are competitors, but I've been using Serverless Framework along with AWS CDK and Typescript for half a year now to develop cloud native applications. In my experience, it's mostly been a breeze - mostly 🥺.
+Serverless Framework and AWS CDK are two important players in the serverless development ecosystem. At first glance, you would think they are competitors, but I've been using Serverless Framework along with AWS CDK and Typescript for half a year now to develop cloud-native applications. In my experience, it's mostly been a breeze - mostly 🥺.
 
 ## TL;DR
 
-Combining [Serverless Framework](https://www.serverless.com/framework) and the [AWS Cloud Development Kit](https://github.com/aws/aws-cdk) forms one of the best stacks to reliably and quickly robust cloud native applications.
+Combining [Serverless Framework](https://www.serverless.com/framework) and the [AWS Cloud Development Kit](https://github.com/aws/aws-cdk) forms one of the best stacks to reliably and quickly robust cloud-native applications.
 
 To achieve that, I recommend using the [@swarmion/serverless-cdk-plugin](https://www.npmjs.com/package/@swarmion/serverless-cdk-plugin) plugin to seamlessly integrate your AWS CDK resources in Serverless Framework.
 
@@ -26,7 +26,7 @@ Most compelling pros:
 
 How does it work?
 
-1. Build your cloud native application using Serverless Framework.
+1. Build your cloud-native application using Serverless Framework.
 
 2. Create non-lambda AWS resources (DynamoDB tables, SQS queues, EventBridge's event buses, etc.) using the [aws-cdk-lib](https://www.npmjs.com/package/aws-cdk-lib) (the aws-cdk v2).
 
@@ -34,7 +34,7 @@ How does it work?
 
 4. Reference your aws-cdk construct in your Serverless framework configuration file.
 
-5. That's it! Serverless Framework seamlessly provisions these resources on deploy.
+5. That's it! Serverless Framework seamlessly provisions these resources on deployment.
 
 ```ts
 // code/serverless-config.ts
@@ -72,13 +72,13 @@ module.exports = serverlessConfiguration;
 
 From there, you have two options:
 
-1. Handling the deployment of your other resources separately, for instance using the AWS CDK. [Sebastian Bille](https://dev.to/tastefulelk) wrote [a cool article](https://dev.to/aws-builders/combining-serverless-framework-aws-cdk-1dg0) about this subject. The main consequence of this approach is having two separate stacks that deploy independently. A situation might arise where one of the two deployment fails. Having only one deployment process for your application solves this downside.
+1. Handling the deployment of your other resources separately, for instance using the AWS CDK. [Sebastian Bille](https://dev.to/tastefulelk) wrote [a cool article](https://dev.to/aws-builders/combining-serverless-framework-aws-cdk-1dg0) about this subject. The main consequence of this approach is having two separate stacks that deploy independently. Nevertheless, one of the deployments might fail, for instance, due to circular dependencies between the two stacks - e.g. SQS => Lambda => SQS flow.
 
 2. Have Serverless Framework provision your resources as part of its deployment cycle. The trade-off is having to write vanilla Cloud Formation. If you've never done it before, believe me, it's a DevX faux-pas 🙅. Thankfully, [Fred Barthelet](https://dev.to/fredericbarthelet) wrote [an awesome article](https://dev.to/kumo/serverless-framework-aws-cdk-1dnf) on how to replace vanilla Cloud Formation by AWS CDK constructs.
 
-Essentially, `aws-cdk` stack classes have a transpilation method that allows the dev-friendly Typescript code you wrote to be transpiled to Cloud formation. The downside to this process is the necessity to write a lot of boilerplate code everytime you need a new resource (SQS queue, etc.).
+Essentially, `aws-cdk` stack classes have a transpilation method that allows the dev-friendly Typescript code you wrote to be transpiled to Cloud formation. The downside to this process is the necessity to write a lot of boilerplate code every time you need a new resource (SQS queue, etc.).
 
-These two solutions solve many interesting use-cases that developers face when building cloud native apps:
+These two solutions solve many interesting use-cases that developers face when building cloud-native apps:
 
 ![Serverless applications building blocks based on AWS cloud services](./assets/lambda_sqs_dynamodb.png)
 
