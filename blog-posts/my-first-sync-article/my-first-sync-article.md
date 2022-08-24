@@ -82,9 +82,9 @@ These two solutions solve many interesting use-cases that developers face when b
 
 ![Serverless applications building blocks based on AWS cloud services](./assets/lambda_sqs_dynamodb.png)
 
-**What if one could build an awesome Serverless application, use the AWS CDK for specific resources while having only one deployment process and no boilerplate?**
+What if one could build an awesome Serverless application, use the AWS CDK for specific resources while having only one deployment process and no boilerplate?
 
-### Enter the @swarmion/serverless-cdk-plugin: a bridge between Serverless Framework and the AWS CDK.
+#### Enter the @swarmion/serverless-cdk-plugin: a bridge between Serverless Framework and the AWS CDK.
 
 At [Kumo](https://dev.to/kumo), we have worked on developing an awesome tool to achieve just that: a complete and stable typescript stack to build serverless applications. Did you know? Our plugin integrates seamlessly with [Swarmion](https://www.swarmion.dev/), a framework for Serverless Typescript microservices.
 
@@ -114,13 +114,11 @@ For instance, if you want to provision a DynamoDB table:
 import { AttributeType, BillingMode, Table } from 'aws-cdk-lib/aws-dynamodb';
 import { Construct } from 'constructs';
 
-import { ServerlessProps } from 'types';
-
 export class MyCdkConstruct extends Construct {
   public dynamodbArn: string;
   public dynamodbName: string;
 
-  constructor(scope: Construct, id: string, props: ServerlessProps) {
+  constructor(scope: Construct, id: string) {
     super(scope, id, props);
 
     const { tableArn, tableName } = new Table(this, 'MyDynamoDBTable', {

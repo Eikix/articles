@@ -1,13 +1,11 @@
 import { AttributeType, BillingMode, Table } from 'aws-cdk-lib/aws-dynamodb';
 import { Construct } from 'constructs';
 
-import { ServerlessProps } from 'types';
-
 export class MyCdkConstruct extends Construct {
   public dynamodbArn: string;
   public dynamodbName: string;
 
-  constructor(scope: Construct, id: string, props: ServerlessProps) {
+  constructor(scope: Construct, id: string) {
     super(scope, id, props);
 
     const { tableArn, tableName } = new Table(this, 'MyDynamoDBTable', {
