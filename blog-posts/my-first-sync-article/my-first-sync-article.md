@@ -1,7 +1,7 @@
 ---
 published: false
 title: 'The ultimate Serverless DevX: Serverless Framework, AWS CDK and Typescript'
-cover_image: 'https://aws-bucket-images-and-resources-articles-engineering-general.s3.eu-west-3.amazonaws.com/serverless_framework_awscdk_thumbnail.png'
+cover_image: 'https://aws-bucket-images-and-resources-articles-engineering-general.s3.eu-west-3.amazonaws.com/serverlessframework_awscdk_typescript_bg.png'
 description: 'Seamlessly combine Serverless Framework and the AWS Cloud Development Kit using a Serverless plugin to build modern and robust cloud-native applications.'
 tags: serverless, awscdk, aws, typescript
 series:
