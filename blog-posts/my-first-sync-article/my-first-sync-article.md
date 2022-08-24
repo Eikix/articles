@@ -12,7 +12,7 @@ Serverless Framework and AWS CDK are two important players in the serverless dev
 
 ## TL;DR
 
-Combining [Serverless Framework](https://www.serverless.com/framework) and the [AWS Cloud Development Kit](https://github.com/aws/aws-cdk) forms one of the best stacks to reliably and quickly robust cloud-native applications.
+Combining [Serverless Framework](https://www.serverless.com/framework) and the [AWS Cloud Development Kit](https://github.com/aws/aws-cdk) forms one of the best stacks to reliably and quickly build robust cloud-native applications.
 
 To achieve that, I recommend using the [@swarmion/serverless-cdk-plugin](https://www.npmjs.com/package/@swarmion/serverless-cdk-plugin) plugin to seamlessly integrate your AWS CDK resources in Serverless Framework.
 
