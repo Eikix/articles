@@ -80,7 +80,7 @@ Essentially, `aws-cdk` stack classes have a transpilation method that allows the
 
 These two solutions solve many interesting use-cases that developers face when building cloud-native apps:
 
-![Serverless applications building blocks based on AWS cloud services](./assets/lambda_sqs_dynamodb.png)
+![Serverless applications building blocks based on AWS cloud services](./assets/lambda_sqs_dynamodb_diagram.png)
 
 What if one could build an awesome Serverless application, use the AWS CDK for specific resources while having only one deployment process and no boilerplate?
 
