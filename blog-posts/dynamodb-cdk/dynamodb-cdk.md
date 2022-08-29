@@ -35,7 +35,7 @@ const table = new Table(stack, 'MyTable', {
 
 ### Getting acquainted with serverless as a software engineer
 
-One of my first missions as a junior dev was to help design a "serverless 101 course". We aimed to help the future rookies in my team feel familiar with cloud-native concepts quickly. We built a concise tutorial that goes through the basics of serverless: lambdas, API gateway, IAM roles and dynamodb tables - with AWS as our cloud provider. I was pretty happy about the result! Newcomers could finally play in a sandbox environment with complex - and scary at first - concepts such as functions-as-a-service and cloud-native databases!
+One of my first missions as a junior dev was to help design a "serverless 101 course". We aimed to help the future rookies in my team feel familiar with cloud-native concepts quickly. We built a concise tutorial that goes through the basics of serverless: lambdas, API gateway, IAM roles and dynamodb tables - with AWS as our cloud provider. I was pretty happy about the result! Newcomers could finally play in a sandbox environment with complex - and scary at first - concepts such as functions-as-a-service (FaaS) and cloud-native managed databases!
 
 There we had it, a small protocol where every newcomer would deploy a toy stack. It served its purpose well and serverless newbies liked it.
 
@@ -43,7 +43,7 @@ There we had it, a small protocol where every newcomer would deploy a toy stack.
 
 Surely, if you read the TL;DR and the small background story, you're starting to see where I'm going with this whole rant.
 
-Each of our team's new comer deployed a toy stack to learn about serverless and AWS. The serverless tutorial uses AWS CDK. To keep it light, we mostly went with default settings. Amongst these settings hid the "provisioned" billing mode and the "retain" removal policy. To simplify, the "provisioned" billing mode means that when provisioning a new dynamodb table, AWS provisions a floor amount of storage space and makes you pay for it. Moreover, as one removes their stack, the "retain" removal policy prevents the dynamodb table from being deleted with the stack.
+Each of our team's new comer deployed a toy stack to learn about serverless and AWS. The serverless tutorial uses AWS CDK. To keep it light, we mostly went with default settings. Amongst these settings hid the "provisioned" billing mode and the "retain" removal policy. To simplify, with the DynamoDB "provisioned" billing mode, AWS provisions a floor storage space, and minimum Read capacity units (RCU) & Write capacity units (WCU). Then, AWS charges you for it regardless of your usage. For DynamoDB, I found that the "provision" billing mode costs about $11/month per table (in US regions) even if you're not using the table at all. Moreover, when a stack is removed, the "retain" removal policy prevents the DynamoDB table from being deleted with the stack.
 
 Each rookie deploys a sandbox stack. Storage resources are provisioned, i.e. the table costs a floor amount even if we don't use it. Tables are prevented from being deleted. Yep, a potentially bottomless pit was created.
 
