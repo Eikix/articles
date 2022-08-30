@@ -45,7 +45,7 @@ Surely, if you read the TL;DR and the small background story, you're starting to
 
 Each of our team's new engineer deployed a toy stack to learn about serverless and AWS. The serverless tutorial uses AWS CDK. To keep it light, we mostly went with default settings. Amongst these settings hid the "provisioned" billing mode and the "retain" removal policy.
 
-To simplify, with the DynamoDB "provisioned" billing mode, AWS provisions a floor storage space, and minimum Read capacity units (RCU) & Write capacity units (WCU). Then, AWS charges you for it, regardless of your usage. 
+To simplify, with the DynamoDB "provisioned" billing mode, AWS provisions a floor storage space, and minimum Read capacity units (RCU) & Write capacity units (WCU). Then, AWS charges you for it, regardless of your usage.
 
 For DynamoDB, I found that the "provision" billing mode costs about $11/month per table (in US regions) even if you're not using the table at all. Moreover, when a stack is removed, the "retain" removal policy prevents the DynamoDB table from being deleted with the stack.
 
