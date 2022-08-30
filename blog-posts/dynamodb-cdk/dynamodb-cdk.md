@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: 'AWS CDK and DynamoDB: This One Configuration Line That Is Costing You Hundreds of Dollars'
 cover_image: 'https://aws-bucket-images-and-resources-articles-engineering-general.s3.eu-west-3.amazonaws.com/dynamodb_awscdk_article_thumbnail.png'
 description: 'AWS CDK sets the AWS DynamoDB billing mode to Provisioned by default. Learn how to fix this configuration.'
@@ -35,20 +35,24 @@ const table = new Table(stack, 'MyTable', {
 
 ### Getting acquainted with serverless as a software engineer
 
-One of my first missions as a junior dev was to help design a "serverless 101 course". We aimed to help the future rookies in my team feel familiar with cloud-native concepts quickly. We built a concise tutorial that goes through the basics of serverless: lambdas, API gateway, IAM roles and dynamodb tables - with AWS as our cloud provider. I was pretty happy about the result! Newcomers could finally play in a sandbox environment with complex - and scary at first - concepts such as functions-as-a-service (FaaS) and cloud-native managed databases!
+One of my first missions as a junior dev was to help design a "serverless 101 course". We aimed to help the future rookies in my team feel familiar with cloud-native concepts quickly. We created a concise tutorial that goes through the basics of serverless: lambdas, API gateway, IAM roles and dynamodb tables - with AWS as our cloud provider. I was pretty happy about the result! Newcomers could finally play in a sandbox environment with complex - and scary at first - concepts such as functions-as-a-service (FaaS) and cloud-native managed databases!
 
-There we had it, a small protocol where every newcomer would deploy a toy stack. It served its purpose well and serverless newbies liked it.
+I felt proud. We had a small protocol where every new developer would deploy a toy stack. It served its purpose well and serverless newbies liked it.
 
 ### I used to take serverless tech's scale-to-zero property for granted 🥺
 
 Surely, if you read the TL;DR and the small background story, you're starting to see where I'm going with this whole rant.
 
-Each of our team's new comer deployed a toy stack to learn about serverless and AWS. The serverless tutorial uses AWS CDK. To keep it light, we mostly went with default settings. Amongst these settings hid the "provisioned" billing mode and the "retain" removal policy. To simplify, with the DynamoDB "provisioned" billing mode, AWS provisions a floor storage space, and minimum Read capacity units (RCU) & Write capacity units (WCU). Then, AWS charges you for it regardless of your usage. For DynamoDB, I found that the "provision" billing mode costs about $11/month per table (in US regions) even if you're not using the table at all. Moreover, when a stack is removed, the "retain" removal policy prevents the DynamoDB table from being deleted with the stack.
+Each of our team's new engineer deployed a toy stack to learn about serverless and AWS. The serverless tutorial uses AWS CDK. To keep it light, we mostly went with default settings. Amongst these settings hid the "provisioned" billing mode and the "retain" removal policy.
+
+To simplify, with the DynamoDB "provisioned" billing mode, AWS provisions a floor storage space, and minimum Read capacity units (RCU) & Write capacity units (WCU). Then, AWS charges you for it, regardless of your usage. 
+
+For DynamoDB, I found that the "provision" billing mode costs about $11/month per table (in US regions) even if you're not using the table at all. Moreover, when a stack is removed, the "retain" removal policy prevents the DynamoDB table from being deleted with the stack.
 
 Each rookie deploys a sandbox stack. Storage resources are provisioned, i.e. the table costs a floor amount even if we don't use it. Tables are prevented from being deleted. Yep, a potentially bottomless pit was created.
 
 ### Wrapping it up: check your serverless expenses each month and don't take serverless' low prices for granted.
 
-Serverless is really inexpensive compared to non-serverless tech stacks. An order of magnitude cheaper. That's why my manager seemed a little surpised when the stacks deployed as part of our serverless tutorial were costing hundreds each months!
+Serverless is inexpensive compared to non-serverless tech stacks. An order of magnitude cheaper. My manager seemed a little surprised when the stacks deployed as part of our serverless tutorial were costing us hundreds each month!
 
-Thankfully ✨, my teammates caught the error after a couple of months thus limiting my oopsie from wasting thousands of dollars (and lots of electricity 💚).
+Thankfully ✨, my teammates caught the error after a couple of months, thus limiting my oopsie from wasting thousands of dollars (and lots of electricity 💚).
